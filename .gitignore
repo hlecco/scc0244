@@ -1,2 +1,2 @@
-dados/*.csv
-dados/*.xlsx
+setup/data/*.csv
+setup/data/*.xlsx

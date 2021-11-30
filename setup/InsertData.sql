@@ -86,6 +86,7 @@ ON CONFLICT (id_paciente) DO UPDATE SET
     cd_municipio = EXCLUDED.cd_municipio,
     cd_cepreduzido = EXCLUDED.cd_cepreduzido;                           
 
+TRUNCATE TABLE dados_brutos.bp_pacientes;
 
 
 INSERT INTO dados_processados.pacientes (
@@ -274,7 +275,7 @@ INSERT INTO dados_processados.exames (
   SELECT DISTINCT ON (id_atendimento, de_exame, de_analito)
       LPAD(id_paciente, 32, '0')::uuid AS id_paciente,
       LPAD(id_atendimento, 32, '0')::uuid AS id_atendimento,
-      to_date(dt_coleta, 'DD/MM/YYYY') AS dt_coleta,
+      to_date(dt_coleta, 'YYYY-MM-DD') AS dt_coleta,
       de_exame,
       de_analito,
       de_resultado,
@@ -365,4 +366,4 @@ TRUNCATE TABLE dados_brutos.bp_desfechos;
   dt_desfecho = EXCLUDED.dt_desfecho,
   de_desfecho = EXCLUDED.de_desfecho;
 
-TRUNCATE TABLE dados_brutos.bp_desfechos;
+TRUNCATE TABLE dados_brutos.sl_desfechos;

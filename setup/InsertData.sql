@@ -198,6 +198,16 @@ TRUNCATE dados_brutos.sl_pacientes;
 -- exames
 
 INSERT INTO dados_processados.exames (
+  id_paciente,
+  id_atendimento,
+  dt_coleta,
+  de_exame,
+  de_analito,
+  de_resultado,
+  de_valor_referencia,
+  cd_unidade,
+  id_hospital
+) (
   SELECT DISTINCT ON (id_atendimento, de_exame, de_analito)
       LPAD(id_paciente, 32, '0')::uuid AS id_paciente,
       LPAD(id_atendimento, 32, '0')::uuid AS id_atendimento,
@@ -209,19 +219,21 @@ INSERT INTO dados_processados.exames (
       de_valor_referencia,
       'BP' AS id_hospital
   FROM dados_brutos.bp_exames
-)
-ON CONFLICT (id_atendimento, de_exame, de_analito)
-DO UPDATE SET
-    id_paciente = EXCLUDED.id_paciente,
-    dt_coleta = EXCLUDED.dt_coleta,
-    de_resultado = EXCLUDED.de_resultado,
-    de_valor_referencia = EXCLUDED.de_valor_referencia,
-    cd_unidade = EXCLUDED.cd_unidade,
-    id_hospital = EXCLUDED.id_hospital;
+);
 
 TRUNCATE dados_brutos.bp_exames;
 
 INSERT INTO dados_processados.exames (
+  id_paciente,
+  id_atendimento,
+  dt_coleta,
+  de_exame,
+  de_analito,
+  de_resultado,
+  de_valor_referencia,
+  cd_unidade,
+  id_hospital
+) (
   SELECT DISTINCT ON (id_atendimento, de_exame, de_analito)
       LPAD(id_paciente, 32, '0')::uuid AS id_paciente,
       md5(random()::TEXT || clock_timestamp()::TEXT)::uuid AS id_atendimento,
@@ -233,20 +245,22 @@ INSERT INTO dados_processados.exames (
       cd_unidade,
       'EI' AS id_hospital
   FROM dados_brutos.ei_exames
-)
-ON CONFLICT (id_atendimento, de_exame, de_analito)
-DO UPDATE SET
-    id_paciente = EXCLUDED.id_paciente,
-    dt_coleta = EXCLUDED.dt_coleta,
-    de_resultado = EXCLUDED.de_resultado,
-    de_valor_referencia = EXCLUDED.de_valor_referencia,
-    cd_unidade = EXCLUDED.cd_unidade,
-    id_hospital = EXCLUDED.id_hospital;
+);
 
 TRUNCATE dados_brutos.ei_exames;
 
 
 INSERT INTO dados_processados.exames (
+  id_paciente,
+  id_atendimento,
+  dt_coleta,
+  de_exame,
+  de_analito,
+  de_resultado,
+  de_valor_referencia,
+  cd_unidade,
+  id_hospital
+) (
   SELECT DISTINCT ON (id_atendimento, de_exame, de_analito)
       LPAD(id_paciente, 32, '0')::uuid AS id_paciente,
       LPAD(id_atendimento, 32, '0')::uuid AS id_atendimento,
@@ -258,20 +272,22 @@ INSERT INTO dados_processados.exames (
       cd_unidade,
       'FY' AS id_hospital
   FROM dados_brutos.fy_exames
-)
-ON CONFLICT (id_atendimento, de_exame, de_analito)
-DO UPDATE SET
-    id_paciente = EXCLUDED.id_paciente,
-    dt_coleta = EXCLUDED.dt_coleta,
-    de_resultado = EXCLUDED.de_resultado,
-    de_valor_referencia = EXCLUDED.de_valor_referencia,
-    cd_unidade = EXCLUDED.cd_unidade,
-    id_hospital = EXCLUDED.id_hospital;
+);
 
 TRUNCATE dados_brutos.fy_exames;
 
 
 INSERT INTO dados_processados.exames (
+  id_paciente,
+  id_atendimento,
+  dt_coleta,
+  de_exame,
+  de_analito,
+  de_resultado,
+  de_valor_referencia,
+  cd_unidade,
+  id_hospital
+) (
   SELECT DISTINCT ON (id_atendimento, de_exame, de_analito)
       LPAD(id_paciente, 32, '0')::uuid AS id_paciente,
       LPAD(id_atendimento, 32, '0')::uuid AS id_atendimento,
@@ -283,20 +299,22 @@ INSERT INTO dados_processados.exames (
       cd_unidade,
       'HC' AS id_hospital
   FROM dados_brutos.hc_exames
-)
-ON CONFLICT (id_atendimento, de_exame, de_analito)
-DO UPDATE SET
-    id_paciente = EXCLUDED.id_paciente,
-    dt_coleta = EXCLUDED.dt_coleta,
-    de_resultado = EXCLUDED.de_resultado,
-    de_valor_referencia = EXCLUDED.de_valor_referencia,
-    cd_unidade = EXCLUDED.cd_unidade,
-    id_hospital = EXCLUDED.id_hospital;
+);
 
 TRUNCATE dados_brutos.hc_exames;
 
 
 INSERT INTO dados_processados.exames (
+  id_paciente,
+  id_atendimento,
+  dt_coleta,
+  de_exame,
+  de_analito,
+  de_resultado,
+  de_valor_referencia,
+  cd_unidade,
+  id_hospital
+) (
   SELECT DISTINCT ON (id_atendimento, de_exame, de_analito)
       LPAD(id_paciente, 32, '0')::uuid AS id_paciente,
       LPAD(id_atendimento, 32, '0')::uuid AS id_atendimento,
@@ -308,15 +326,7 @@ INSERT INTO dados_processados.exames (
       cd_unidade,
       'SL' AS id_hospital
   FROM dados_brutos.sl_exames
-)
-ON CONFLICT (id_atendimento, de_exame, de_analito)
-DO UPDATE SET
-    id_paciente = EXCLUDED.id_paciente,
-    dt_coleta = EXCLUDED.dt_coleta,
-    de_resultado = EXCLUDED.de_resultado,
-    de_valor_referencia = EXCLUDED.de_valor_referencia,
-    cd_unidade = EXCLUDED.cd_unidade,
-    id_hospital = EXCLUDED.id_hospital;
+);
 
 TRUNCATE dados_brutos.sl_exames;
 

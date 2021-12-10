@@ -157,6 +157,7 @@ CREATE TABLE dados_processados.pacientes (
 );
 
 CREATE TABLE dados_processados.exames (
+    id_exame serial PRIMARY KEY,
     id_paciente uuid NOT NULL,
     id_atendimento uuid,
     dt_coleta date NOT NULL,
@@ -165,8 +166,7 @@ CREATE TABLE dados_processados.exames (
     de_resultado text,
     de_valor_referencia text,
     cd_unidade text,
-    id_hospital char(2),
-    PRIMARY KEY (id_atendimento, de_exame, de_analito)
+    id_hospital char(2)
 );
 
 CREATE TABLE dados_processados.desfechos (

@@ -152,7 +152,7 @@ total_obitos|total_alta|outros|
 - E para cada distribuição por gênero e por década de vida?
 
 decada_nascimento|id_sexo|total_obitos|total_alta|outros|
------------------+-------+------------+----------+------+
+-----------------|-------|------------|----------|------|
              1930|F      |          71|      2969|    14|
              1940|F      |          43|      4131|    16|
              1950|F      |          22|      7489|    31|

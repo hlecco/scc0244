@@ -17,7 +17,7 @@ AS SELECT exames.id_exame,
    
 -- Verificando os diferentes analitos
 -- Precisamos saber quais existem para fazer a atualização
-SELECT DISTINCT de_analito
+SELECT DISTINCT id_hospital, de_analito
 FROM dados_processados.exames
 INNER JOIN dados_processados.exames_hemograma
 ON exames_hemograma.id_exame = exames.id_exame

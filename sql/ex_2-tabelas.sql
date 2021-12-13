@@ -21,7 +21,7 @@ PREPARE describe_table (varchar, varchar) AS
         attname AS coluna,
         null_frac AS percentual_nulos,
         n_distinct AS valores_distintos,
-        column_variance(attname::varchar, ($1 || '.' || $2)) AS variancia,
+        column_variance(attname::varchar, $1, $2) AS variancia,
         most_common_vals AS valores_mais_comuns
     FROM pg_catalog.pg_stats ps
     WHERE schemaname = $1

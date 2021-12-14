@@ -124,5 +124,6 @@ SELECT crn.*, cri.resultado, cri.dias_desde_resultado_diferente
 FROM covid_resultados_intervalos cri
 FULL OUTER JOIN covid_resultados_numeros crn
 ON cri.id_atendimento = crn.id_atendimento
-WHERE dias_desde_resultado_diferente IS NOT NULL
-AND cri.id_paciente = crn.id_paciente;
+WHERE cri.id_paciente = crn.id_paciente
+-- AND dias_desde_resultado_diferente IS NOT NULL
+;

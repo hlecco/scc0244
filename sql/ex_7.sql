@@ -4,7 +4,8 @@ SELECT de_analito, count(*) AS qtd FROM dados_processados.exames e
 INNER JOIN dados_processados.exames_hemograma eh
 ON e.id_exame = eh.id_exame
 WHERE hemograma
-GROUP BY de_analito;
+GROUP BY de_analito
+ORDER BY qtd DESC;
 
 -- Verificando exames mais comuns que são feitos para cada um desses analitos
 
